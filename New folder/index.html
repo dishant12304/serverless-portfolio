@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dishant — Cloud & Serverless Engineer</title>
+<meta name="description" content="Portfolio of Dishant — serverless systems built on AWS." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">DS<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-kicker">Cloud & Serverless Engineer</p>
+      <h1 class="hero-title">
+        I build things that scale to zero,
+        <span class="hero-title-accent">then to millions.</span>
+      </h1>
+      <p class="hero-sub">
+        I'm Dishant. I design and ship serverless systems on AWS — static frontends on
+        S3 and CloudFront, event-driven APIs on Lambda, data on DynamoDB — with the
+        infrastructure and deploys wired to run themselves.
+      </p>
+      <div class="hero-actions">
+        <a href="#project" class="btn btn-primary">See the build</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+<dl class="hero-stats">
+  <div><dt id="visitor-count">0</dt><dd>visitors so far</dd></div>
+</dl>
+    <div class="hero-visual">
+      <canvas id="network" aria-hidden="true"></canvas>
+      <div class="hero-visual-label">live request path</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <h2>What I actually do</h2>
+      <p>
+        Most of my work sits at the seam between infrastructure and application code —
+        deciding what runs where, and making sure it deploys the same way every time.
+      </p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Design for cost, not just for scale</h3>
+        <p>Pay-per-request beats an idle EC2 box for most portfolio-sized and early-stage workloads. I default to managed and serverless unless there's a real reason not to.</p>
+      </div>
+      <div class="about-card">
+        <h3>Automate the boring parts</h3>
+        <p>If I deploy something by hand twice, the third time is a GitHub Actions workflow. Infrastructure changes should be reviewable, not remembered.</p>
+      </div>
+      <div class="about-card">
+        <h3>Keep the blast radius small</h3>
+        <p>Least-privilege IAM roles, scoped permission sets, no long-lived access keys. Root stays locked in a drawer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="section section-dark" id="architecture">
+    <div class="section-head">
+      <h2>How a request moves through this site</h2>
+      <p>This page you're reading, end to end — five stops, no servers.</p>
+    </div>
+
+    <div class="flow" id="flow">
+      <div class="flow-step" data-step="1">
+        <div class="flow-num">1</div>
+        <h3>Browser</h3>
+        <p>You request the page over HTTPS.</p>
+      </div>
+      <div class="flow-step" data-step="2">
+        <div class="flow-num">2</div>
+        <h3>CloudFront</h3>
+        <p>Edge cache serves the static site from the nearest location.</p>
+      </div>
+      <div class="flow-step" data-step="3">
+        <div class="flow-num">3</div>
+        <h3>S3</h3>
+        <p>Origin bucket holds the built frontend — HTML, CSS, JS.</p>
+      </div>
+      <div class="flow-step" data-step="4">
+        <div class="flow-num">4</div>
+        <h3>API Gateway</h3>
+        <p>The contact form below hits a REST endpoint here.</p>
+      </div>
+      <div class="flow-step" data-step="5">
+        <div class="flow-num">5</div>
+        <h3>Lambda</h3>
+        <p><code>lambda_function.py</code> validates the message and stores it — no server ever runs idle.</p>
+      </div>
+    </div>
+
+    <svg class="flow-line" id="flowLine" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+      <path id="flowPath" d="M 20 30 L 980 30" />
+    </svg>
+
+    <p class="flow-caption">
+      Deploys run through <code>.github/workflows/deploy.yml</code> — every push to <code>main</code>
+      syncs the frontend to S3, invalidates the CloudFront cache, and updates the Lambda function.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-head">
+      <h2>Stack</h2>
+      <p>Tools I reach for by default, grouped by where they sit.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Compute & Delivery</h3>
+        <ul><li>AWS Lambda</li><li>API Gateway</li><li>CloudFront</li><li>S3 static hosting</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Data & Identity</h3>
+        <ul><li>DynamoDB</li><li>IAM Identity Center</li><li>Least-privilege IAM roles</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Delivery pipeline</h3>
+        <ul><li>Git & GitHub</li><li>GitHub Actions</li><li>AWS CLI</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Application</h3>
+        <ul><li>Python</li><li>JavaScript</li><li>HTML / CSS</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section class="section section-dark" id="project">
+    <div class="section-head">
+      <h2>Featured build</h2>
+      <p>This site is the project — the architecture above is exactly what's deployed.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-info">
+        <h3>serverless-portfolio</h3>
+        <p>
+          A fully serverless personal site: static frontend on S3 behind CloudFront,
+          a contact form backed by a Python Lambda through API Gateway, and a
+          GitHub Actions workflow that deploys the whole thing on every push to <code>main</code>.
+          No EC2 instance, no always-on cost.
+        </p>
+        <ul class="project-tags">
+          <li>S3</li><li>CloudFront</li><li>Lambda</li><li>API Gateway</li><li>GitHub Actions</li>
+        </ul>
+        <a href="https://github.com/dishant12304/serverless-portfolio" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <div class="project-diagram" aria-hidden="true">
+        <div class="node n1">S3</div>
+        <div class="node n2">CloudFront</div>
+        <div class="node n3">API GW</div>
+        <div class="node n4">Lambda</div>
+        <div class="node n5">DynamoDB</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-head">
+      <h2>Get in touch</h2>
+      <p>This form posts to the API Gateway endpoint above — swap in your own Lambda URL to make it live.</p>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Send message</button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Built with S3, CloudFront, Lambda and API Gateway. Deployed by GitHub Actions.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
