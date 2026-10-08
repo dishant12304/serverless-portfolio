@@ -17,12 +17,13 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::489205146749:role/github-actions-role
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
       - name: Deploy to S3
         run: |
-          aws s3 sync "./New folder"" end s3://dishant-portfolio2026 --delete
+          aws s3 sync "./New folder" s3://dishant-portfolio2026 --delete
 
       - name: Invalidate CloudFront
         run: |
